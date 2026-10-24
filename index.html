@@ -42,7 +42,7 @@
             </a>
             <a class="btn ghost" href="#que-hace">Ver qué hace</a>
           </div>
-          <p class="meta">Versión 1.2.0 · Android 7.0 o superior · 18 MB</p>
+          <p class="meta" id="version-meta">Versión 1.2.0 · Android 7.0 o superior · 18 MB</p>
         </div>
 
         <div class="phone-stage">
@@ -274,5 +274,18 @@
       <span><a href="privacidad.html">Política de privacidad</a> · <a href="terminos.html">Términos y condiciones</a></span>
     </div>
   </footer>
+  <script>
+    // Muestra siempre la versión y el tamaño del último Release publicado (si falla, queda el texto fijo).
+    fetch('https://api.github.com/repos/BUMAPP-SV/eshoy-app/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+      .then(function (r) { return r.ok ? r.json() : null })
+      .then(function (rel) {
+        if (!rel || !rel.tag_name) return
+        var apk = (rel.assets || []).filter(function (a) { return a.name === 'esHoy.apk' })[0]
+        var el = document.getElementById('version-meta')
+        if (!apk || !el) return
+        el.textContent = 'Versión ' + rel.tag_name.replace(/^v/i, '') + ' · Android 7.0 o superior · ' + Math.round(apk.size / 1048576) + ' MB'
+      })
+      .catch(function () {})
+  </script>
 </body>
 </html>

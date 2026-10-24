@@ -22,16 +22,16 @@ Luego, en GitHub: **Settings → Pages → Branch: `main` / carpeta `/ (root)`**
 La página queda en `https://bumapp-sv.github.io/eshoy-app/`.
 
 ## Publicar una versión del APK
-1. En GitHub: **Releases → Draft a new release**, etiqueta `v1.1.7`.
+1. En GitHub: **Releases → Draft a new release**, etiqueta `v<versionName>` (por ejemplo `v1.2.1`; sin letras extra).
 2. Adjunta el archivo con el nombre exacto **`esHoy.apk`**.
 3. Publica. El botón de la página apunta siempre al último release:
    `https://github.com/BUMAPP-SV/eshoy-app/releases/latest/download/esHoy.apk`
+4. La página lee sola la versión y el tamaño del último Release (script al final de `index.html`), así que **no hay que editar el texto**; solo la etiqueta del release debe ser la versión real.
 
 Con la CLI de GitHub (`gh`):
 ```bash
-gh release create v1.1.7 _release/esHoy.apk --title "esHoy 1.1.7" --notes "Cambios de esta versión"
+gh release create v1.2.1 _release/esHoy.apk --title "esHoy 1.2.1" --notes "Cambios de esta versión"
 ```
 
 ## Antes de repartirlo de verdad
 - Firmar el APK con una llave **release** propia (hoy está firmado con la de depuración). Guardar la llave: si se pierde, nadie podrá actualizar.
-- Actualizar el número de versión y el tamaño en `index.html` (texto "Versión … · … MB").
