@@ -1,0 +1,5 @@
+# El APK va en "Releases" de GitHub, no en el repositorio.
+_release/
+*.apk
+*.keystore
+*.jks
