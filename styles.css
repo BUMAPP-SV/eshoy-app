@@ -194,3 +194,8 @@ footer a { color: var(--muted); }
 .doc .updated { margin-top: 10px; color: var(--faint); font-size: 14px; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* Selector de idioma (es / en) */
+.lang-link { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; padding: 6px 10px; border-radius: 999px; }
+.lang-link:hover { color: var(--ink); }
+.nav-right { display: flex; align-items: center; gap: 8px; }
